@@ -1,0 +1,308 @@
+/* ================================================
+   Premium Emerald & Gold - Logo Left, Search Center
+   ================================================ */
+
+:root {
+    --bg-primary: #0a110e;
+    --bg-secondary: #121f1a;
+    --bg-card: #182922;
+    --bg-card-hover: #1f362d;
+    --bg-navbar: rgba(10, 17, 14, 0.9);
+    --bg-input: #0f1c16;
+    --bg-input-focus: #182922;
+
+    --text-primary: #f4f7f5;
+    --text-secondary: #adbeb6;
+    --text-muted: #536b60;
+
+    --accent: #d4af37;
+    --accent-light: #f3e5ab;
+    --accent-glow: rgba(212, 175, 55, 0.2);
+    --accent-danger: #e05d5d;
+
+    --gradient-brand: linear-gradient(135deg, #d4af37 0%, #aa7c11 100%);
+    --gradient-card-border: linear-gradient(160deg, rgba(212, 175, 55, 0.35), transparent 60%);
+
+    --border-subtle: rgba(255, 255, 255, 0.04);
+    --border-input: rgba(212, 175, 55, 0.25);
+
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    --radius-pill: 4px;
+
+    --shadow-card: 0 12px 40px rgba(0, 0, 0, 0.6);
+    --shadow-glow: 0 0 20px var(--accent-glow);
+    --shadow-navbar: 0 2px 25px rgba(0, 0, 0, 0.5);
+
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+
+    --navbar-height: 84px;
+    --max-width: 1240px;
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+    margin: 0; padding: 0; box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;
+}
+
+/* ================================================
+   Navbar Layout (Logo Left, Search Centered)
+   ================================================ */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg-navbar);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    box-shadow: var(--shadow-navbar);
+    height: var(--navbar-height);
+}
+
+.navbar-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 24px;
+    position: relative;
+}
+
+/* Brand / Logo attached to the Left */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    z-index: 10;
+}
+
+.brand-icon {
+    font-size: 1.6rem;
+    display: inline-block;
+    line-height: 1;
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 6px var(--accent-glow));
+    transition: transform var(--transition-medium);
+}
+
+.navbar-brand:hover .brand-icon {
+    transform: scale(1.2) rotate(90deg);
+}
+
+.brand-text {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+}
+
+.brand-accent {
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 400;
+    text-transform: lowercase;
+}
+
+/* Search Bar Perfectly Centered */
+.search-wrapper {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 520px;
+    display: flex;
+    align-items: center;
+    background: var(--bg-input);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-pill);
+    transition: all var(--transition-medium);
+    z-index: 5;
+}
+
+.search-wrapper:focus-within {
+    background: var(--bg-input-focus);
+    border-color: var(--accent);
+    box-shadow: var(--shadow-glow);
+}
+
+.search-icon {
+    width: 16px; height: 16px; margin-left: 16px; color: var(--text-muted); flex-shrink: 0;
+}
+
+.search-wrapper:focus-within .search-icon { color: var(--accent); }
+
+.search-input {
+    flex: 1; background: transparent; border: none; outline: none; color: var(--text-primary); font-size: 0.9rem; padding: 12px 14px 12px 10px; min-width: 0;
+}
+.search-input::placeholder { color: var(--text-muted); }
+
+.search-btn {
+    flex-shrink: 0; background: var(--gradient-brand); color: #1a1a1a; border: none; padding: 10px 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; border-radius: var(--radius-pill); margin-right: 4px; transition: all var(--transition-fast);
+}
+
+.search-btn:hover { background: var(--accent-light); box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3); }
+
+/* ================================================
+   Category Controls - Classy Glass Pill Container
+   ================================================ */
+.categories-bar {
+    width: 92%;
+    max-width: 950px;
+    margin: 24px auto;
+    border-radius: 100px;
+    background: rgba(18, 31, 26, 0.45); 
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    box-shadow: 
+        0 12px 30px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.categories-bar::-webkit-scrollbar { display: none; }
+
+.categories-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    width: max-content; /* Ensures it scrolls properly on small screens */
+    margin: 0 auto;
+}
+
+.category-pill {
+    flex-shrink: 0; 
+    background: transparent; 
+    color: var(--text-secondary); 
+    border: 1px solid transparent; 
+    border-radius: var(--radius-pill); 
+    padding: 8px 18px; 
+    font-size: 0.85rem; 
+    font-weight: 500; 
+    cursor: pointer; 
+    transition: all var(--transition-fast);
+}
+
+.category-pill:hover { 
+    background: rgba(255, 255, 255, 0.04); 
+    color: var(--text-primary); 
+}
+
+.category-pill.active { 
+    background: rgba(10, 17, 14, 0.85); 
+    border-color: var(--accent); 
+    color: var(--accent); 
+    font-weight: 700; 
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); 
+}
+
+/* ================================================
+   Active Search Tag
+   ================================================ */
+.active-search-tag {
+    max-width: var(--max-width); margin: 24px auto 0; padding: 0 24px; display: flex; justify-content: center; align-items: center; gap: 10px;
+}
+.tag-label { font-size: 0.85rem; color: var(--text-muted); }
+.tag-value { display: inline-flex; align-items: center; gap: 8px; background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.2); color: var(--accent-light); padding: 6px 14px; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 600; }
+.tag-clear { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 0.85rem; transition: color var(--transition-fast); }
+.tag-clear:hover { color: var(--accent-danger); }
+
+/* ================================================
+   Loader Configuration
+   ================================================ */
+#loader { display: none; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 100px 24px; color: var(--text-secondary); }
+.spinner { width: 40px; height: 40px; border: 2px solid var(--bg-card); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.75s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ================================================
+   News Grid Architecture
+   ================================================ */
+.news-container {
+    max-width: var(--max-width); margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 36px; padding: 40px 24px 80px;
+}
+
+.card {
+    background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.02); border-radius: var(--radius-lg); overflow: hidden; transition: all var(--transition-medium); position: relative; display: flex; flex-direction: column; box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3); animation: cardEntrance 0.6s cubic-bezier(0.25, 1, 0.5, 1) both;
+}
+.card::before { content: ''; position: absolute; inset: 0; border-radius: var(--radius-lg); padding: 1px; background: var(--gradient-card-border); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; opacity: 0; transition: opacity var(--transition-medium); }
+.card:hover { transform: translateY(-6px); box-shadow: var(--shadow-card); background: var(--bg-card-hover); border-color: rgba(212, 175, 55, 0.15); }
+.card:hover::before { opacity: 1; }
+
+.card-image-wrapper { position: relative; overflow: hidden; aspect-ratio: 16 / 10; background-color: var(--bg-secondary); }
+.card-image-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-medium); filter: sepia(15%) brightness(0.9); }
+.card:hover .card-image-wrapper img { transform: scale(1.04); filter: sepia(0%) brightness(1); }
+
+.card-content { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+.card-content h3 { font-size: 1.1rem; font-weight: 600; line-height: 1.45; margin: 0 0 12px; color: var(--text-primary); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.card-content .card-description { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin: 0 0 20px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; flex: 1; }
+
+.card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.04); }
+.card-source { font-size: 0.75rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; }
+
+.card-link { display: inline-flex; align-items: center; border: 1px solid rgba(212, 175, 55, 0.3); padding: 6px 16px; border-radius: var(--radius-pill); font-size: 0.75rem; font-weight: 600; color: var(--text-primary); text-decoration: none; text-transform: uppercase; letter-spacing: 0.5px; transition: all var(--transition-fast); }
+.card-link:hover { background: var(--gradient-brand); border-color: transparent; color: #1a1a1a; }
+
+/* ================================================
+   Error & Messaging Layout
+   ================================================ */
+.state-message { grid-column: 1 / -1; text-align: center; padding: 80px 24px; background: var(--bg-secondary); border-radius: var(--radius-lg); border: 1px dashed rgba(212, 175, 55, 0.1); }
+.state-message .state-emoji { font-size: 3rem; margin-bottom: 16px; display: block; }
+.state-message h2 { font-size: 1.4rem; font-weight: 600; color: var(--text-primary); margin-bottom: 6px; }
+.state-message p { color: var(--text-secondary); }
+.state-message.error h2 { color: var(--accent-danger); }
+
+@keyframes cardEntrance { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ================================================
+   Mobile / Responsive Safety
+   ================================================ */
+@media (max-width: 850px) {
+    .navbar-inner {
+        justify-content: space-between;
+        gap: 16px;
+    }
+    
+    /* Disable absolute centering on small screens to prevent text overlap */
+    .search-wrapper {
+        position: relative;
+        left: 0;
+        transform: none;
+        max-width: 100%;
+        flex: 1;
+    }
+
+    .brand-text { display: none; }
+    
+    /* Adjust category pill bar padding for small screens */
+    .categories-bar { width: 96%; margin: 16px auto; }
+    .categories-inner { justify-content: flex-start; padding: 12px 16px; }
+    
+    .news-container { grid-template-columns: 1fr; gap: 24px; padding: 24px 16px; }
+}
