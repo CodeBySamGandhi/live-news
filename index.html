@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Live News Feed – Search and browse the latest news by topic or category, powered by NewsAPI.">
+    <title>DOMinators</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="NEWSOjt.css">
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="/" class="navbar-brand" id="navbarBrand">
+               <span class="brand-icon">✦</span>
+                <span class="brand-text">DOMinators</span>
+            </a>
+
+            <div class="search-wrapper" id="searchWrapper">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input
+                    type="text"
+                    id="searchInput"
+                    class="search-input"
+                    placeholder="Search any topic… e.g. AI, Cricket, Space"
+                    autocomplete="off"
+                >
+                <button class="search-btn" id="searchBtn" aria-label="Search news">
+                    Search
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="categories-bar" id="categoriesBar">
+        <div class="categories-inner">
+            <button class="category-pill active" data-category="general">🌍 General</button>
+            <button class="category-pill" data-category="technology">💻 Technology</button>
+            <button class="category-pill" data-category="business">📈 Business</button>
+            <button class="category-pill" data-category="science">🔬 Science</button>
+            <button class="category-pill" data-category="health">🏥 Health</button>
+            <button class="category-pill" data-category="sports">⚽ Sports</button>
+            <button class="category-pill" data-category="entertainment">🎬 Entertainment</button>
+        </div>
+    </section>
+
+    <div class="active-search-tag" id="activeSearchTag" style="display:none;">
+        <span class="tag-label">Showing results for:</span>
+        <span class="tag-value" id="activeSearchValue"></span>
+        <button class="tag-clear" id="clearSearch" aria-label="Clear search">✕</button>
+    </div>
+
+    <main>
+        <h1 class="sr-only">Live News Feed – Latest Headlines</h1>
+
+        <div id="loader" class="loader">
+            <div class="spinner"></div>
+            <p>Fetching the latest news…</p>
+        </div>
+
+        <div id="newsContainer" class="news-container"></div>
+    </main>
+
+</body>
+<script src="NEWSOjt.js"></script>
+</html>
